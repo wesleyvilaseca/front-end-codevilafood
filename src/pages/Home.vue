@@ -106,3 +106,16 @@
     <!-- /.col-lg-9 -->
   </div>
 </template>
+
+<script>
+import { mapActions } from "vuex";
+
+export default {
+  mounted() {
+    this.getCompanies;
+  },
+  methods: {
+    ...mapActions(["getCompanies"]),
+  },
+};
+</script>
