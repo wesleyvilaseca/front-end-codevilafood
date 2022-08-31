@@ -1,5 +1,6 @@
 <template>
   <div>
+    <preloader-component />
     <header-component />
     <hr />
     <div class="container container-body">

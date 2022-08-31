@@ -14,6 +14,7 @@
     "popper.js": "^1.16.1",
     "vue": "^2.6.14",
     "vue-router": "^3.6.4",
+    "vue-toastify": "^1.8.1",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
