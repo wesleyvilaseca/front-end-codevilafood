@@ -10,7 +10,7 @@
           :key="index"
         >
           <div class="restaurant-card">
-            <router-link class="logo" :to="{ name: 'products' }">
+            <a class="logo" href="#" @click.prevent="goStoreCompany(company)">
               <img
                 v-if="company.logo"
                 class="card-img-top"
@@ -24,10 +24,12 @@
                 src="@/assets/imgs/vue-food.png"
                 :alt="company.name"
               />
-            </router-link>
+            </a>
             <div class="restaurant-card-body">
               <h3>
-                <a href="vitrine-tenant.html">{{ company.name }}</a>
+                <a href="#" @click.prevent="goStoreCompany(company)">{{
+                  company.name
+                }}</a>
               </h3>
             </div>
           </div>
@@ -40,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions, mapState } from "vuex";
+import { mapActions, mapState, mapMutations } from "vuex";
 
 export default {
   mounted() {
@@ -57,6 +59,17 @@ export default {
 
   methods: {
     ...mapActions(["getCompanies"]),
+    ...mapMutations({
+      setCompany: "SET_COMPANY",
+    }),
+
+    goStoreCompany(company) {
+      this.setCompany(company);
+      this.$router.push({
+        name: "products",
+        params: { companyFlag: company.flag },
+      });
+    },
   },
 };
 </script>
