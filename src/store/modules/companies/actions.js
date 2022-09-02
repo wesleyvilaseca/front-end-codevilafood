@@ -37,10 +37,9 @@ const actions = {
             .finally(() => commit('SET_PRELOADER', false));
     },
 
-    getProductsByCompany({ commit }, uuid) {
+    getProductsByCompany({ commit }, params) {
         commit('SET_PRELOADER', true);
         commit('SET_TEXT_PRELOADER', 'Carregando os produtos...');
-        const params = { uuid };
         return axios.get(`${API_VERSION}/products`, { params })
             .then(res => { commit('SET_PRODUCTS_COMPANY', res.data) })
             .finally(() => commit('SET_PRELOADER', false));
