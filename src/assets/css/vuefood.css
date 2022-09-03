@@ -195,18 +195,18 @@ body {
 .card--flat .card-footer {
   border-radius: 0 0 .75rem .75rem;
   font-weight: 600;
-  background: #c62828;
+  background: #06C167;
   transition: background .5s ease;
 }
 
 .card--flat .card-footer:hover {
-  background: #4b830d;
+  background: #028948;
 }
 
 /* end car redesign */
 .disabled .card-footer-custom {
-  background: #d89e9f;
-  border-top: 1px solid #d89e9f;
+  background: #97df92;
+  border-top: 1px solid #97df92;
   cursor: no-drop;
 }
 
@@ -319,16 +319,16 @@ body {
   transition: box-shadow .5s ease, background .7s ease, opacity .5s ease;
 }
 
-.list-categories .active, a:hover {
+.list-categories a:hover, .active-category {
   background: #fbd560 !important;
 }
 
-.list-categories .active, a:hover .icon {
+.list-categories a:hover .icon, .active-category {
   background: #fff;
   color: #000 !important;
 }
 
-.list-categories .active, a:hover i {
+.list-categories a:hover i, .active-category {
   /* transform: scale(1.2); */
   font-size: 2rem !important;
 }
@@ -410,7 +410,7 @@ body {
 }
 
 .nav-cart:hover {
-  background: #4b830d;
+  background: #028948;
 }
 
 .nav-item-text .nav-link {
@@ -491,7 +491,7 @@ body {
   border-radius: 0 0 1rem 1rem;
   margin-top: -15px;
   z-index: 1;
-  background: #4b830d;
+  background: #ffc107;
   color: #fff;
   padding: 30px 15px 20px;
   text-align: center;
@@ -503,7 +503,7 @@ body {
 }
 
 .shopping-cart .cart-finalizar:hover {
-  background: #00701a;
+  background: #ffc107;
 }
 
 /* detais pedido */

@@ -18,14 +18,16 @@
     </div>
     <!-- Cards Produtos -->
     <div class="row my-4">
-      <!-- <div v-if="products.data.length === 0">Nenhum produto</div> -->
+      <div v-if="products.data.length === 0">Nenhum produto</div>
 
       <div
         class="col-lg-4 col-md-6 mb-4"
         v-for="(product, index) in products.data"
         :key="index"
       >
-        <div class="card--flat h-100">
+        <div
+          :class="['card--flat', 'h-100', { disabled: productInCart(product) }]"
+        >
           <a href="#">
             <div class="card-image">
               <img class="card-img-top" :src="product.image" alt="" />
@@ -38,10 +40,25 @@
             <h5>R$ {{ product.price }}</h5>
             <p class="card-text">{{ product.description }}</p>
           </div>
-          <div class="card-footer card-footer-custom">
-            <router-link :to="{ name: 'cart' }">
-              Adicionar no Carrinho <i class="fas fa-cart-plus"></i>
-            </router-link>
+
+          <div
+            v-if="productInCart(product)"
+            :class="['card-footer', 'card-footer-custom']"
+            style="color: #fff"
+          >
+            <span>
+              <i class="fas fa-cart-plus"></i>
+            </span>
+          </div>
+          <div
+            v-else
+            :class="['card-footer', 'card-footer-custom']"
+            style="color: #fff"
+            @click.prevent="addProductCart(product)"
+          >
+            <span>
+              <i class="fas fa-cart-plus"></i>
+            </span>
           </div>
         </div>
       </div>
@@ -73,6 +90,7 @@ export default {
     ]),
     ...mapMutations({
       setCompany: "SET_COMPANY",
+      addProductCart: "ADD_PRODUCT_CART",
     }),
 
     loadProducts() {
@@ -104,7 +122,15 @@ export default {
     },
 
     categoryInFilter(category) {
-      return category.id == this.filters.category ? "active" : "";
+      return category.id == this.filters.category ? "active-category" : "";
+    },
+
+    productInCart(product) {
+      var inCart = false;
+      this.productsCart.map((productCart, index) => {
+        if (productCart.identify === product.identify) inCart = true;
+      });
+      return inCart;
     },
   },
 
@@ -132,6 +158,7 @@ export default {
       company: (state) => state.companies.companySelected,
       categories: (state) => state.companies.categoriesCompanySelected,
       products: (state) => state.companies.productsCompanySelected,
+      productsCart: (state) => state.cart.products.data,
     }),
   },
 };
