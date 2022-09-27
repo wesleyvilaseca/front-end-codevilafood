@@ -116,7 +116,7 @@ export default {
         .then((res) => {
           this.getMe();
           this.$vToastify.success("Login realizado com sucesso", "Success");
-          this.$router.push({ name: "home" });
+          this.$router.push({ name: "my.orders" });
         })
         .catch((error) => {
           const errorResponse = error.response;

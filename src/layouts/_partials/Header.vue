@@ -23,8 +23,20 @@
             </li>
 
             <li class="nav-item">
-              <a href="#" v-if="me.name" class="nav-link text-success mt-2 ms-5">Olá {{ me.name }} <span @click.prevent="logout()" class="btn btn-sm btn-danger">Sair</span></a>
-              <router-link v-else :to="{ name: 'login' }" class="nav-link text-success mt-2 ms-5">
+              <router-link
+                :to="{ name: 'my.orders' }"
+                v-if="me.name"
+                class="nav-link text-success mt-2 ms-5"
+                >Olá {{ me.name }}
+                <span @click.prevent="exit()" class="btn btn-sm btn-danger"
+                  >Sair</span
+                ></router-link
+              >
+              <router-link
+                v-else
+                :to="{ name: 'login' }"
+                class="nav-link text-success mt-2 ms-5"
+              >
                 Login
               </router-link>
             </li>
@@ -45,6 +57,11 @@ export default {
       productsCart: (state) => state.cart.products.data,
       me: (state) => state.auth.me,
     }),
+  },
+  methods: {
+    exit() {
+      this.logout();
+    },
   },
 };
 </script>

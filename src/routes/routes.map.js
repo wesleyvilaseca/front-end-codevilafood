@@ -3,7 +3,8 @@ import Products from '@/pages/Products';
 import Cart from '@/pages/Cart';
 import Login from '@/pages/Auth/Login';
 import Register from '@/pages/Auth/Register';
-
+import MyOrders from '@/pages/MyOrders';
+import DetailOrder from '@/pages/DetailOrder';
 
 const routes = [
     {
@@ -25,7 +26,19 @@ const routes = [
                 path: '/carrinho',
                 component: Cart,
                 name: 'cart'
-            }
+            },
+            {
+                path: '/meus-pedidos',
+                component: MyOrders,
+                name: 'my.orders'
+            },
+            {
+                path: '/pedido/:identify',
+                component: DetailOrder,
+                name: 'detail.order',
+                props: true
+            },
+
         ]
     },
 
