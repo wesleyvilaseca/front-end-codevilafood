@@ -6,7 +6,12 @@ const state = {
     companySelected: {
         name: '',
         uuid: '',
-        products: []
+        products: [],
+        table: {
+           identify: '',
+           description: '',
+           name: ''
+        }
     },
 
     categoriesCompanySelected: {
@@ -15,7 +20,7 @@ const state = {
 
     productsCompanySelected: {
         data: []
-    }
+    },
 };
 
 export default state;

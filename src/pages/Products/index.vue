@@ -3,6 +3,10 @@
     <!-- About Tenant and Categories -->
     <h1 class="my-4 title-tenant text-center">{{ company.name }}</h1>
 
+    <div>
+      <a href="#" class="btn btn-sm btn-warning" @click.prevent="remove()"> << Voltar</a>
+    </div>
+
     <div class="row">
       <div class="list-categories">
         <a
@@ -12,7 +16,7 @@
           :key="index"
           :class="['list-categories__item', categoryInFilter(category)]"
           ><div class="icon"><i :class="category.icon"></i></div>
-          <span> {{ category.name }} </span>
+          <span> {{ category.name }}</span>
         </a>
       </div>
     </div>
@@ -37,7 +41,7 @@
             <h4 class="card-title">
               <a href="#">{{ product.name }}</a>
             </h4>
-            <h5>R$ {{ product.price }}</h5>
+            <h5>R$ {{ product.price | formatPrice}}</h5>
             <p class="card-text">{{ product.description }}</p>
           </div>
 
@@ -91,6 +95,7 @@ export default {
     ...mapMutations({
       setCompany: "SET_COMPANY",
       addProductCart: "ADD_PRODUCT_CART",
+      removeCompany: "REMOVE_COMPANY_SELECTED",
     }),
 
     loadProducts() {
@@ -131,6 +136,11 @@ export default {
         if (productCart.identify === product.identify) inCart = true;
       });
       return inCart;
+    },
+
+    remove() {
+      this.removeCompany();
+      this.$router.push({ name: "home" });
     },
   },
 

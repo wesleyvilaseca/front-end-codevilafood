@@ -37,11 +37,30 @@ const actions = {
             .finally(() => commit('SET_PRELOADER', false));
     },
 
+    getCompanyByUuid({ commit }, uuid) {
+        commit('SET_PRELOADER', true);
+        return axios.get(`${API_VERSION}${RESOURCE}/${uuid}`)
+            .then(res => {
+                commit('SET_COMPANY', res.data.data)
+            })
+            .finally(() => commit('SET_PRELOADER', false));
+    },
+
     getProductsByCompany({ commit }, params) {
         commit('SET_PRELOADER', true);
         commit('SET_TEXT_PRELOADER', 'Carregando os produtos...');
         return axios.get(`${API_VERSION}/products`, { params })
             .then(res => { commit('SET_PRODUCTS_COMPANY', res.data) })
+            .finally(() => commit('SET_PRELOADER', false));
+    },
+
+    getTableFromCompany({ commit }, params) {
+        commit('SET_PRELOADER', true);
+        commit('SET_TEXT_PRELOADER', 'Carregando as mesas...');
+        return axios.get(`${API_VERSION}/tables/${params.table}`, params)
+            .then(res => {
+                commit('SET_TABLE_COMPANY', res.data.data)
+            })
             .finally(() => commit('SET_PRELOADER', false));
     }
 };

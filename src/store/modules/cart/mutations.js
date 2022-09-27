@@ -16,7 +16,7 @@ const mutations = {
     INCREMENT_QTY_PROD_CART(state, product) {
         state.products.data = state.products.data.map((productCart, index) => {
             if (productCart.identify === product.identify) {
-                state.products.data[index].qty ++;
+                state.products.data[index].qty++;
             }
 
             return state.products.data[index];
@@ -27,13 +27,17 @@ const mutations = {
     DECREMENT_QTY_PROD_CART(state, product) {
         state.products.data = state.products.data.filter((productCart, index) => {
             if (productCart.identify == product.identify) {
-                state.products.data[index].qty =  state.products.data[index].qty - 1 ;
+                state.products.data[index].qty = state.products.data[index].qty - 1;
             }
 
             if (state.products.data[index].qty > 0)
                 return state.products.data[index];
         });
     },
+
+    CLEAR_CART(state) {
+        state.products.data = [];
+    }
 
 };
 

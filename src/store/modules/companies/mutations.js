@@ -13,6 +13,35 @@ const mutations = {
 
     SET_PRODUCTS_COMPANY(state, products) {
         state.productsCompanySelected = products
+    },
+
+    SET_TABLE_COMPANY(state, table) {
+        state.companySelected.table = table
+    },
+
+    REMOVE_TABLE_COMPANY(state, table) {
+        state.companySelected.table = {
+            identify: '',
+            description: '',
+            name: ''
+        }
+    },
+
+    REMOVE_COMPANY_SELECTED(state) {
+        state.companySelected = {
+            name: '',
+            uuid: '',
+            products: [],
+            table: {
+                identify: '',
+                description: '',
+                name: ''
+            }
+        };
+
+        state.categoriesCompanySelected = {
+            data: []
+        }
     }
 };
 

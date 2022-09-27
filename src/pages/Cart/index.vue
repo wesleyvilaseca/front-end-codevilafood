@@ -80,21 +80,24 @@
 
       <hr />
 
-      <div class="cart-price text-red">Preço Total: <b>R$ {{ totalCart }}</b></div>
+      <Checkout />
     </div>
-    <!-- end card body -->
-    <a href="" class="cart-finalizar">Finalizar</a>
   </div>
   <!-- cart-->
 </template>
 
 <script>
 import { mapState, mapMutations } from "vuex";
+import Checkout from "../_partials/Checkout.vue";
 
 export default {
+  components: {
+    Checkout,
+  },
   computed: {
     ...mapState({
       products: (state) => state.cart.products.data,
+      me: (state) => state.auth.me
     }),
 
     totalCart() {

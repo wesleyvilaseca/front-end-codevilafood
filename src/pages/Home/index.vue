@@ -46,6 +46,9 @@ import { mapActions, mapState, mapMutations } from "vuex";
 
 export default {
   mounted() {
+    if(this.company.name) {
+      this.$router.push({name: 'products', params: {companyFlag: this.company.flag}})
+    }
     this.getCompanies().catch((res) => {
       this.$vToastify.error("Falha ao carregar empresas");
     });
@@ -54,6 +57,7 @@ export default {
   computed: {
     ...mapState({
       companies: (state) => state.companies.items,
+      company: (state) => state.companies.companySelected
     }),
   },
 
